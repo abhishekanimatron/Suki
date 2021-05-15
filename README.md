@@ -3,4 +3,4 @@
 A tsuki market clone.
 
 Visit the original site here:
-tsuki.market
+https://tsuki.market
