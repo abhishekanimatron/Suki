@@ -1,13 +1,19 @@
 import "./App.css";
-import FreeShip from "./components/FreeShip";
-import Header from "./components/Header";
+import { Route, Switch } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Account from "./pages/Account";
+import Cart from "./pages/Cart";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <div className="App">
-      <FreeShip />
-      <Header />
-    </div>
+    <>
+      <Switch>
+        <Route path="/account" component={Account} />
+        <Route path="/cart" component={Cart} />
+        <Route path="/" component={Home} />
+      </Switch>
+    </>
   );
 }
 

@@ -15,8 +15,8 @@ export default function FreeShip() {
 const Container = styled.div`
   background-color: #010;
   color: white;
+  z-index: 2;
   text-align: center;
-  padding: 0.2rem;
 
   p {
     font-size: 0.8rem;
@@ -29,7 +29,7 @@ const Container = styled.div`
     }
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     display: none;
   }
 `;

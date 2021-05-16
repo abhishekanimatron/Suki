@@ -1,0 +1,53 @@
+/* Drop Down Menu  */
+.btn-primary {
+  color: black;
+  background-color: transparent;
+  border: none;
+}
+.btn-primary:active {
+  color: rgb(75, 161, 187);
+  background-color: transparent;
+  cursor: pointer;
+}
+.btn-primary:focus {
+  color: rgb(75, 161, 187);
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  color: rgb(75, 161, 187);
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle {
+  background-color: transparent;
+  border: none;
+  color: rgb(75, 161, 187);
+}
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: none;
+}
+
+/* Drop down items */
+.dropdown-item {
+  margin: 0;
+  display: block;
+  background-color: #ffd4ea;
+  color: white;
+}
+.dropdown-item:hover {
+  display: block;
+  background-color: #ffd4ea;
+  color: transparent;
+}
+.dropdown-item:active {
+  display: block;
+  background-color: #ffd4ea;
+  color: transparent;
+}
