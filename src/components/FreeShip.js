@@ -19,7 +19,7 @@ const Container = styled.div`
   text-align: center;
 
   p {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: bolder;
     letter-spacing: 1.5px;
 

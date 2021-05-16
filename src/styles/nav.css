@@ -5,12 +5,12 @@
   border: none;
 }
 .btn-primary:active {
-  color: rgb(75, 161, 187);
+  color: black;
   background-color: transparent;
   cursor: pointer;
 }
 .btn-primary:focus {
-  color: rgb(75, 161, 187);
+  color: black;
   background-color: transparent;
   cursor: pointer;
 }
@@ -26,7 +26,7 @@
 .show > .btn-primary.dropdown-toggle {
   background-color: transparent;
   border: none;
-  color: rgb(75, 161, 187);
+  color: black;
 }
 .btn-primary:not(:disabled):not(.disabled).active:focus,
 .btn-primary:not(:disabled):not(.disabled):active:focus,
