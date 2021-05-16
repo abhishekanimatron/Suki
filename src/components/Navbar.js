@@ -2,7 +2,6 @@ import React from "react";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import styled from "styled-components";
 import "../styles/nav.css";
-import ChevronRightOutlinedIcon from "@material-ui/icons/ChevronRightOutlined";
 
 export default function Navbar() {
   return (
@@ -10,25 +9,25 @@ export default function Navbar() {
       <Nav>
         <DropdownButton
           id="home-menu"
-          class="dropdown-basic-button"
+          className="dropdown-basic-button"
           title="Home ホームページ"
         >
-          <Dropdown.Item class="menu-item" href="#">
+          <Dropdown.Item className="menu-item" href="#">
             RESPONSIBILITY
           </Dropdown.Item>
         </DropdownButton>
         <DropdownButton
           id="collection-menu"
-          class="dropdown-basic-button"
+          className="dropdown-basic-button"
           title="Collections コレクション"
         >
-          <Dropdown.Item class="menu-item" href="#">
+          <Dropdown.Item className="menu-item" href="#">
             BASICS
           </Dropdown.Item>
-          <Dropdown.Item class="menu-item" href="#">
+          <Dropdown.Item className="menu-item" href="#">
             BLACK MOON
           </Dropdown.Item>
-          <Dropdown.Item class="menu-item" href="#">
+          <Dropdown.Item className="menu-item" href="#">
             SUKI SPACE PROGRAM
           </Dropdown.Item>
         </DropdownButton>
@@ -50,6 +49,7 @@ const Nav = styled.div`
 
   h6 {
     font-weight: normal;
+    overflow: hidden;
     &:hover {
       color: rgb(75, 161, 187);
       background-color: transparent;
@@ -68,7 +68,6 @@ const Nav = styled.div`
 `;
 
 const Container = styled.div`
-  z-index: 1;
   padding: 0.5rem 0;
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;

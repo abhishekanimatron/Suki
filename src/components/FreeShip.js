@@ -6,7 +6,7 @@ export default function FreeShip() {
     <Container>
       <p>
         FREE WORLDWIDE SHIPPING OVER $199<span> | </span>
-        <span>USE CODE: ABHISHEK</span>
+        <span>USE CODE: SUKI</span>
       </p>
     </Container>
   );

@@ -29,7 +29,6 @@ export default function Header() {
 }
 
 const Wrap = styled.div`
-  z-index: 1;
   text-align: center;
   img {
     margin-left: 4rem;

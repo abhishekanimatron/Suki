@@ -8,7 +8,6 @@ export default function BasicWall() {
       <HeroContentWrap>
         <HeroContent>
           <h3>Back to Basics</h3>
-          <ShopButton>SHOP NOW</ShopButton>
         </HeroContent>
       </HeroContentWrap>
     </Container>
@@ -17,6 +16,7 @@ export default function BasicWall() {
 
 const Container = styled.div`
   img {
+    z-index: -100;
     max-width: 100%;
     margin: 0;
     border: 0;
@@ -30,7 +30,7 @@ const Container = styled.div`
 
 const HeroContentWrap = styled.div`
   display: flex;
-  position: absolute;
+  /* position: absolute; */
   align-items: flex-start;
   justify-content: center;
   align-items: center;
@@ -40,29 +40,14 @@ const HeroContentWrap = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
-  z-index: 100;
 `;
 
 const HeroContent = styled.div`
   h3 {
-    color: white;
+    margin: 2rem;
+    color: black;
     font-size: 1.5rem;
+    height: 2rem;
     font-weight: lighter;
-    @media (max-width: 600px) {
-      margin-top: -150px;
-    }
   }
-`;
-
-const ShopButton = styled.button`
-  margin-top: 1rem;
-  background-color: transparent;
-  color: white;
-  border: 1px solid #fff;
-  cursor: pointer;
-  display: inline-block;
-  line-height: 1.5;
-  text-decoration: none;
-  font-size: 0.8rem;
-  padding: 0.7rem 2rem;
 `;
