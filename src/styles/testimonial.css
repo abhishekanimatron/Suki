@@ -15,7 +15,7 @@
   padding-right: 0;
 }
 .quote-icon {
-  margin-top: 5rem;
+  margin-top: 30%;
 }
 .testimonial-content {
   background-color: #f4e0ea;
@@ -34,4 +34,25 @@
   font-size: 0.8rem;
   margin-top: -1.5rem;
   padding-left: 4rem;
+}
+
+@media (max-width: 900px) {
+  .testimonial-img img {
+    width: 100vw;
+    max-height: 50vh;
+  }
+  .quote-icon {
+    font-size: 20;
+    margin: 0;
+  }
+  .quote-icon:nth-of-type() {
+    display: none;
+  }
+
+  .testimonial-content {
+    text-align: center;
+  }
+  .testimonial-content .quote {
+    text-align: center;
+  }
 }

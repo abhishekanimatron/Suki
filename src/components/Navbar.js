@@ -33,7 +33,6 @@ export default function Navbar() {
         </DropdownButton>
 
         <h6>
-          {" "}
           Animal Crossing Closet <span>どうぶつの森 コレクション</span>
         </h6>
       </Nav>
