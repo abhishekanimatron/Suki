@@ -6,6 +6,6 @@
 body {
   font-family: "KoHo", sans-serif;
 }
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
   display: none;
-} */
+}

@@ -65,7 +65,7 @@ const Wrap = styled.div`
 const HeroContent = styled.div`
   position: relative;
   float: right;
-  bottom: 14rem;
+  bottom: 15rem;
   right: 2rem;
   background-color: #fff;
   padding: 3rem 2rem;
