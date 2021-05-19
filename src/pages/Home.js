@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar";
 import ImageCarousel from "../components/home/ImageCarousel";
 import Testimonial from "../components/home/Testimonial";
 import LandShopTrio from "../components/home/LandShopTrio";
+import LandItems from "../components/home/LandItems";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <ImageCarousel />
       <Testimonial />
       <LandShopTrio />
+      <LandItems />
     </>
   );
 }
