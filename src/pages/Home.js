@@ -7,7 +7,7 @@ import ImageCarousel from "../components/home/ImageCarousel";
 import Testimonial from "../components/home/Testimonial";
 import LandShopTrio from "../components/home/LandShopTrio";
 import LandItems from "../components/home/LandItems";
-import Footer from "../components/Footer";
+import Footer from "../components/footer/Footer";
 
 export default function Home() {
   return (

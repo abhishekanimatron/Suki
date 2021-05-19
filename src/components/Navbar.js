@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import styled from "styled-components";
 import "../styles/nav.css";
@@ -13,7 +14,15 @@ export default function Navbar() {
           title="Home ホームページ"
         >
           <Dropdown.Item className="menu-item" href="#">
-            RESPONSIBILITY
+            <Link
+              to="/pages/responsibility"
+              style={{
+                textDecoration: "none",
+                color: "white",
+              }}
+            >
+              RESPONSIBILITY
+            </Link>
           </Dropdown.Item>
         </DropdownButton>
         <DropdownButton
@@ -22,13 +31,37 @@ export default function Navbar() {
           title="Collections コレクション"
         >
           <Dropdown.Item className="menu-item" href="#">
-            BASICS
+            <Link
+              to="/collections/all-products"
+              style={{
+                textDecoration: "none",
+                color: "white",
+              }}
+            >
+              BASICS
+            </Link>
           </Dropdown.Item>
           <Dropdown.Item className="menu-item" href="#">
-            BLACK MOON
+            <Link
+              to="/collections/black-moon"
+              style={{
+                textDecoration: "none",
+                color: "white",
+              }}
+            >
+              BLACK MOON
+            </Link>
           </Dropdown.Item>
           <Dropdown.Item className="menu-item" href="#">
-            SUKI SPACE PROGRAM
+            <Link
+              to="/collections/space-2029"
+              style={{
+                textDecoration: "none",
+                color: "white",
+              }}
+            >
+              SUKI SPACE PROGRAM
+            </Link>
           </Dropdown.Item>
         </DropdownButton>
 

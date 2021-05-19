@@ -35,17 +35,21 @@
 }
 
 /* Drop down items */
+
+.menu-item,
 .dropdown-item {
   margin: 0;
   display: block;
   background-color: #ffd4ea;
   color: white;
 }
+.menu-item,
 .dropdown-item:hover {
   display: block;
-  background-color: #ffd4ea;
   color: transparent;
 }
+
+.menu-item,
 .dropdown-item:active {
   display: block;
   background-color: #ffd4ea;

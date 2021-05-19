@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import "../styles/icons.css";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import SearchRoundedIcon from "@material-ui/icons/SearchRounded";
@@ -10,7 +11,9 @@ export default function Header() {
   return (
     <div>
       <Wrap>
-        <img id="suki-logo" src="/images/TSUKI_360x.png" alt="TSUKI" />
+        <Link to="/">
+          <img id="suki-logo" src="/images/TSUKI_360x.png" alt="TSUKI" />
+        </Link>
         <Icon id="menu-icon">
           <MenuIcon />
         </Icon>
