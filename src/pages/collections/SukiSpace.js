@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import FreeShip from "../../components/FreeShip";
 import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
@@ -7,6 +7,9 @@ import FooterLinks from "../../components/footer/FooterLinks";
 import styled from "styled-components";
 
 export default function SukiSpace() {
+  useEffect(() => {
+    document.title = "SPACE 2029 - Suki";
+  }, []);
   return (
     <>
       <FreeShip />

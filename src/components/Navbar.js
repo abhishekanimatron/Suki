@@ -1,4 +1,4 @@
-import React from "react";
+import * as ROUTES from "../constants/routes";
 import { Link } from "react-router-dom";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import styled from "styled-components";
@@ -15,7 +15,7 @@ export default function Navbar() {
         >
           <Dropdown.Item className="menu-item" href="#">
             <Link
-              to="/pages/responsibility"
+              to={ROUTES.RESPONSIBILITY}
               style={{
                 textDecoration: "none",
                 color: "white",
@@ -32,7 +32,7 @@ export default function Navbar() {
         >
           <Dropdown.Item className="menu-item" href="#">
             <Link
-              to="/collections/all-products"
+              to={ROUTES.ALL_PRODUCTS}
               style={{
                 textDecoration: "none",
                 color: "white",
@@ -43,7 +43,7 @@ export default function Navbar() {
           </Dropdown.Item>
           <Dropdown.Item className="menu-item" href="#">
             <Link
-              to="/collections/black-moon"
+              to={ROUTES.BLACK_MOON}
               style={{
                 textDecoration: "none",
                 color: "white",
@@ -54,7 +54,7 @@ export default function Navbar() {
           </Dropdown.Item>
           <Dropdown.Item className="menu-item" href="#">
             <Link
-              to="/collections/space-2029"
+              to={ROUTES.SPACE}
               style={{
                 textDecoration: "none",
                 color: "white",

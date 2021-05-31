@@ -1,28 +1,35 @@
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { lazy, Suspense } from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import { createBrowserHistory } from "history";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Account from "./pages/Account";
-import Cart from "./pages/Cart";
-import Home from "./pages/Home";
-import Responsibility from "./pages/Responsibility";
-import AllProducts from "./pages/collections/AllProducts";
-import Blackmoon from "./pages/collections/Blackmoon";
-import SukiSpace from "./pages/collections/SukiSpace";
+import * as ROUTES from "./constants/routes";
+
+const Account = lazy(() => import("./pages/Account"));
+const Cart = lazy(() => import("./pages/Cart"));
+const Home = lazy(() => import("./pages/Home"));
+const Responsibility = lazy(() => import("./pages/Responsibility"));
+const AllProducts = lazy(() => import("./pages/collections/AllProducts"));
+const Blackmoon = lazy(() => import("./pages/collections/Blackmoon"));
+const SukiSpace = lazy(() => import("./pages/collections/SukiSpace"));
+const NotFound = lazy(() => import("./pages/notFound"));
 
 function App() {
   const history = createBrowserHistory();
   return (
     <Router history={history}>
-      <Switch>
-        <Route exact path="/account" component={Account} />
-        <Route exact path="/pages/responsibility" component={Responsibility} />
-        <Route exact path="/collections/all-products" component={AllProducts} />
-        <Route exact path="/collections/black-moon" component={Blackmoon} />
-        <Route exact path="/collections/space-2029" component={SukiSpace} />
-        <Route exact path="/cart" component={Cart} />
-        <Route exact path="/" component={Home} />
-      </Switch>
+      <Suspense fallback={<p>Loading...</p>}>
+        <Switch>
+          <Route path={ROUTES.ACCOUNT} component={Account} />
+          <Route path={ROUTES.RESPONSIBILITY} component={Responsibility} />
+          <Route path={ROUTES.ALL_PRODUCTS} component={AllProducts} />
+          <Route path={ROUTES.BLACK_MOON} component={Blackmoon} />
+          <Route path={ROUTES.SPACE} component={SukiSpace} />
+          <Route path={ROUTES.CART} component={Cart} />
+          <Route path={ROUTES.HOME} component={Home} exact />
+          <Route component={NotFound} />
+        </Switch>
+      </Suspense>
     </Router>
   );
 }

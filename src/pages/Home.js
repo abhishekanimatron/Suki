@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import BasicWall from "../components/home/BasicWall";
 import FreeShip from "../components/FreeShip";
 import Header from "../components/Header";
@@ -10,6 +10,9 @@ import LandItems from "../components/home/LandItems";
 import Footer from "../components/footer/Footer";
 
 export default function Home() {
+  useEffect(() => {
+    document.title = "Home - Suki";
+  }, []);
   return (
     <>
       <FreeShip />

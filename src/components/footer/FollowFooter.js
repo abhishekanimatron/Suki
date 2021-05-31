@@ -16,9 +16,9 @@ export default function FollowFooter() {
       </FooterFollow>
       <FooterFollow>
         <h3>Follow us on Instagram</h3>
-        <icon>
+        <Icon>
           <InstagramIcon style={{ cursor: "pointer" }} />
-        </icon>
+        </Icon>
       </FooterFollow>
     </ContainerTwo>
   );
@@ -62,5 +62,15 @@ const FooterFollow = styled.div`
     &:hover {
       color: skyblue;
     }
+  }
+`;
+
+const Icon = styled.div`
+  padding: 0.8rem;
+  margin-top: 3rem;
+
+  &:hover {
+    color: #f4e0ea;
+    cursor: pointer;
   }
 `;

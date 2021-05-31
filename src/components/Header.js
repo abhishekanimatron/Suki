@@ -1,4 +1,4 @@
-import React from "react";
+import * as ROUTES from "../constants/routes";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import "../styles/icons.css";
@@ -11,21 +11,25 @@ export default function Header() {
   return (
     <div>
       <Wrap>
-        <Link to="/">
+        <Link to={ROUTES.HOME}>
           <img id="suki-logo" src="/images/TSUKI_360x.png" alt="TSUKI" />
         </Link>
         <Icon id="menu-icon">
           <MenuIcon />
         </Icon>
-        <Icon className="icon" id="cart-icon">
-          <ShoppingCartRoundedIcon />
-        </Icon>
+        <Link to={ROUTES.CART}>
+          <Icon className="icon" id="cart-icon">
+            <ShoppingCartRoundedIcon />
+          </Icon>
+        </Link>
         <Icon className="icon" id="search-icon">
           <SearchRoundedIcon />
         </Icon>
-        <Icon className="icon" id="account-icon">
-          <AccountCircleOutlinedIcon />
-        </Icon>
+        <Link to={ROUTES.ACCOUNT}>
+          <Icon className="icon" id="account-icon">
+            <AccountCircleOutlinedIcon />
+          </Icon>
+        </Link>
       </Wrap>
     </div>
   );

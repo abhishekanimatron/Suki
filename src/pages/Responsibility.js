@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 import FreeShip from "../components/FreeShip";
 import Header from "../components/Header";
@@ -7,6 +7,9 @@ import FollowFooter from "../components/footer/FollowFooter";
 import FooterLinks from "../components/footer/FooterLinks";
 
 export default function Responsibility() {
+  useEffect(() => {
+    document.title = "Responsibility - Suki";
+  }, []);
   return (
     <>
       <Container>
