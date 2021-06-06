@@ -3,8 +3,23 @@ import { Link } from "react-router-dom";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import styled from "styled-components";
 import "../styles/nav.css";
+import { useState } from "react";
 
 export default function Navbar() {
+  const [collectionShow, setCollectionShow] = useState(false);
+  const [homeShow, setHomeShow] = useState(false);
+  const showCollectionDropdown = (e) => {
+    setCollectionShow(!collectionShow);
+  };
+  const hideCollectionDropdown = (e) => {
+    setCollectionShow(false);
+  };
+  const showHomeDropdown = (e) => {
+    setHomeShow(!collectionShow);
+  };
+  const hideHomeDropdown = (e) => {
+    setHomeShow(false);
+  };
   return (
     <Container>
       <Nav>
@@ -12,6 +27,9 @@ export default function Navbar() {
           id="home-menu"
           className="dropdown-basic-button"
           title="Home ホームページ"
+          show={homeShow}
+          onMouseEnter={showHomeDropdown}
+          onMouseLeave={hideHomeDropdown}
         >
           <Dropdown.Item className="menu-item" href="#">
             <Link
@@ -29,6 +47,9 @@ export default function Navbar() {
           id="collection-menu"
           className="dropdown-basic-button"
           title="Collections コレクション"
+          show={collectionShow}
+          onMouseEnter={showCollectionDropdown}
+          onMouseLeave={hideCollectionDropdown}
         >
           <Dropdown.Item className="menu-item" href="#">
             <Link
@@ -64,10 +85,17 @@ export default function Navbar() {
             </Link>
           </Dropdown.Item>
         </DropdownButton>
-
-        <h6>
-          Animal Crossing Closet <span>どうぶつの森 コレクション</span>
-        </h6>
+        <Link
+          to={ROUTES.ANIMAL_CROSSING}
+          style={{
+            textDecoration: "none",
+            color: "black",
+          }}
+        >
+          <h6>
+            Animal Crossing Closet <span>どうぶつの森 コレクション</span>
+          </h6>
+        </Link>
       </Nav>
     </Container>
   );

@@ -1,6 +1,6 @@
 import * as ROUTES from "../constants/routes";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import "../styles/icons.css";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import SearchRoundedIcon from "@material-ui/icons/SearchRounded";
@@ -17,7 +17,13 @@ export default function Header() {
         <Icon id="menu-icon">
           <MenuIcon />
         </Icon>
-        <Link to={ROUTES.CART}>
+        <Link
+          to={ROUTES.CART}
+          style={{
+            textDecoration: "none",
+            color: "black",
+          }}
+        >
           <Icon className="icon" id="cart-icon">
             <ShoppingCartRoundedIcon />
           </Icon>
@@ -25,7 +31,13 @@ export default function Header() {
         <Icon className="icon" id="search-icon">
           <SearchRoundedIcon />
         </Icon>
-        <Link to={ROUTES.ACCOUNT}>
+        <Link
+          to={ROUTES.ACCOUNT}
+          style={{
+            textDecoration: "none",
+            color: "black",
+          }}
+        >
           <Icon className="icon" id="account-icon">
             <AccountCircleOutlinedIcon />
           </Icon>

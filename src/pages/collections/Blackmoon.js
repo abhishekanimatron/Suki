@@ -85,6 +85,12 @@ const Wrap = styled.div`
     width: 100%;
     height: 86%;
     border-bottom: 1px solid black;
+    transition: 0.2s ease-out;
+    &:hover {
+      opacity: 0.75;
+      cursor: pointer;
+      transition: 0.2s ease-in;
+    }
   }
   p {
     padding-top: 1rem;

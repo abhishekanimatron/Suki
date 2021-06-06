@@ -1,4 +1,6 @@
 import React from "react";
+import * as ROUTES from "../../constants/routes";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -20,21 +22,27 @@ export default function LandItems() {
           <img src="/images/carousel/ethical-source.jpg" alt="es" />{" "}
           <HeroContent>
             <h1>Ethically Sourced</h1>
-            <Button>READ MORE</Button>
+            <Link to={ROUTES.RESPONSIBILITY}>
+              <Button>READ MORE</Button>
+            </Link>
           </HeroContent>
         </Wrap>
         <Wrap>
           <img src="/images/carousel/smile-cap.jpg" alt="sc" />
           <HeroContent>
             <h1>Corduroy Cap</h1>
-            <Button>READ MORE</Button>
+            <Link to={ROUTES.NOT_FOUND}>
+              <Button>READ MORE</Button>
+            </Link>
           </HeroContent>
         </Wrap>
         <Wrap>
           <img src="/images/carousel/sock-set.jpg" alt="ss" />{" "}
           <HeroContent>
             <h1>SOCK SET</h1>
-            <Button>READ MORE</Button>
+            <Link to={ROUTES.NOT_FOUND}>
+              <Button>READ MORE</Button>
+            </Link>
           </HeroContent>
         </Wrap>
       </Slider>{" "}

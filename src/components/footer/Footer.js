@@ -11,9 +11,7 @@ export default function Footer() {
     <Container>
       <ContainerOne>
         <TextContent>
-          <Icon>
-            <SportsHandballIcon />
-          </Icon>
+          <SportsHandballIcon />
           <h4>Thoughtfully designed</h4>
           <p>
             We design apparel and homeware that feature creative, fun designs
@@ -75,16 +73,5 @@ const TextContent = styled.div`
     margin-left: 2.5rem;
     font-size: 0.9rem;
     width: 70%;
-  }
-`;
-
-const Icon = styled.div`
-  float: right;
-  padding: 0.8rem;
-  margin-top: 3rem;
-
-  &:hover {
-    color: #f4e0ea;
-    cursor: pointer;
   }
 `;

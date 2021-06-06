@@ -1,5 +1,7 @@
 import "../../styles/landshop.css";
 import styled from "styled-components";
+import * as ROUTES from "../../constants/routes";
+import { Link } from "react-router-dom";
 
 export default function LandShopTrio() {
   return (
@@ -10,7 +12,9 @@ export default function LandShopTrio() {
         </ShopImage>
         <ShopContent>
           <p class="shop-text">Shop the look</p>
-          <img src="/images/landing-shop-items/marziashirt.jpg" alt="ms" />
+          <Link to={ROUTES.NOT_FOUND}>
+            <img src="/images/landing-shop-items/marziashirt.jpg" alt="ms" />
+          </Link>
           <p class="item-name">Striped Button Up Shirt</p>
           <p class="item-price">$ 77.00 USD</p>
         </ShopContent>
@@ -18,7 +22,10 @@ export default function LandShopTrio() {
       <Wrap>
         <ShopContent>
           <p class="shop-text">Shop the look</p>
-          <img src="/images/landing-shop-items/felix-vest.jpg" alt="ms" />
+          <Link to={ROUTES.NOT_FOUND}>
+            <img src="/images/landing-shop-items/felix-vest.jpg" alt="ms" />
+          </Link>
+
           <p class="item-name">Space Vest</p>
           <p class="item-price">
             <span class="sell-price">$ 54.00 USD</span> $ 25.00 USD
@@ -37,7 +44,9 @@ export default function LandShopTrio() {
         </ShopImage>
         <ShopContent>
           <p class="shop-text">Shop the look</p>
-          <img src="/images/landing-shop-items/felix_black.jpg" alt="fb" />
+          <Link to={ROUTES.NOT_FOUND}>
+            <img src="/images/landing-shop-items/felix_black.jpg" alt="fb" />
+          </Link>
           <p class="item-name">Black Moon Sweatshirt</p>
           <p class="item-price">$ 108.00 USD</p>
         </ShopContent>

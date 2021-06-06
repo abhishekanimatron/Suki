@@ -13,6 +13,7 @@ const AllProducts = lazy(() => import("./pages/collections/AllProducts"));
 const Blackmoon = lazy(() => import("./pages/collections/Blackmoon"));
 const SukiSpace = lazy(() => import("./pages/collections/SukiSpace"));
 const NotFound = lazy(() => import("./pages/notFound"));
+const AnimalCrossing = lazy(() => import("./pages/AnimalCrossing"));
 
 function App() {
   const history = createBrowserHistory();
@@ -25,6 +26,7 @@ function App() {
           <Route path={ROUTES.ALL_PRODUCTS} component={AllProducts} />
           <Route path={ROUTES.BLACK_MOON} component={Blackmoon} />
           <Route path={ROUTES.SPACE} component={SukiSpace} />
+          <Route path={ROUTES.ANIMAL_CROSSING} component={AnimalCrossing} />
           <Route path={ROUTES.CART} component={Cart} />
           <Route path={ROUTES.HOME} component={Home} exact />
           <Route component={NotFound} />

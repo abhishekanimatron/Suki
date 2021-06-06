@@ -1,4 +1,3 @@
-import React from "react";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import styled from "styled-components";
 
@@ -16,9 +15,16 @@ export default function FollowFooter() {
       </FooterFollow>
       <FooterFollow>
         <h3>Follow us on Instagram</h3>
-        <Icon>
-          <InstagramIcon style={{ cursor: "pointer" }} />
-        </Icon>
+        <a
+          href="https://instagram.com/tsuki_market"
+          style={{
+            color: "white",
+          }}
+        >
+          <Icon>
+            <InstagramIcon />
+          </Icon>
+        </a>
       </FooterFollow>
     </ContainerTwo>
   );

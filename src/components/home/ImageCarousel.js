@@ -1,4 +1,5 @@
-import React from "react";
+import * as ROUTES from "../../constants/routes";
+import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -26,9 +27,11 @@ export default function ImageCarousel() {
           <img src="/images/carousel/blackmoon2.jpg" alt="bm2" />{" "}
         </Wrap>
       </Slider>{" "}
-      <ButtonWrap>
-        <ShopButton>Shop Now</ShopButton>
-      </ButtonWrap>
+      <Link to={ROUTES.ALL_PRODUCTS}>
+        <ButtonWrap>
+          <ShopButton>Shop Now</ShopButton>
+        </ButtonWrap>
+      </Link>
     </Container>
   );
 }
