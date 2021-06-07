@@ -1,15 +1,18 @@
 import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { doesEmailExist } from "../../services/firebase";
 import styled from "styled-components";
 import FirebaseContext from "../../context/firebase";
 import * as ROUTES from "../../constants/routes";
 
-export default function Login() {
+export default function Signup() {
   useEffect(() => {
-    document.title = "Login - Suki Market";
+    document.title = "Create Account - Suki Market";
   }, []);
   const history = useHistory();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   const { firebase } = useContext(FirebaseContext);
@@ -18,34 +21,82 @@ export default function Login() {
 
   const [error, setError] = useState("");
 
-  const handleLogin = async (event) => {
+  const handleSignUp = async (event) => {
     event.preventDefault();
-    try {
-      await firebase.auth().signInWithEmailAndPassword(emailAddress, password);
-      history.push(ROUTES.CART);
-    } catch (error) {
+    const emailExists = await doesEmailExist(emailAddress);
+    //if that username doesn't exist create one with it
+    if (!emailExists.length) {
+      try {
+        // sending email address and password firebase authentication
+        const createdUserResult = await firebase
+          .auth()
+          .createUserWithEmailAndPassword(emailAddress, password);
+        // update the user's display name to firstName given
+        await createdUserResult.user.updateProfile({
+          displayName: emailAddress,
+        });
+        // create a user document in users collection with uid & other details in firestore
+        await firebase.firestore().collection("users").add({
+          userId: createdUserResult.user.uid,
+          firstName,
+          lastName,
+          emailAddress: emailAddress.toLowerCase(),
+          dateCreated: Date.now(),
+        });
+        history.push(ROUTES.HOME);
+      } catch (error) {
+        setFirstName("");
+        setLastName("");
+        setEmailAddress("");
+        setPassword("");
+        setError(error.message);
+      }
+    }
+    //else throw error message
+    else {
       setEmailAddress("");
-      setPassword("");
-      setError(error.message);
+      setError("Email already taken, try another");
     }
   };
 
   return (
     <div>
       <Container>
-        <h3>Login</h3>
+        <h3>Create Account</h3>
         <HeroContent>
           <p>
-            Don't have an account?{" "}
+            Already have an account?{" "}
             <Link
-              to={ROUTES.REGISTER}
+              to={ROUTES.LOGIN}
               style={{ textDecoration: "none", color: "black" }}
             >
-              <span>Sign up here.</span>
+              <span>Sign in here.</span>
             </Link>
           </p>
-          {error && <p style={{ color: "#eaa789" }}>{error}</p>}
-          <form onSubmit={handleLogin} method="POST">
+          {error && <p style={{ color: "red" }}>{error}</p>}
+          <form onSubmit={handleSignUp} method="POST">
+            <label for="firstName">First Name</label>
+            <input
+              aria-label="Enter first name"
+              name="firstName"
+              type="text"
+              placeholder="Enter your first name "
+              onChange={({ target }) => {
+                setFirstName(target.value);
+              }}
+              value={firstName}
+            />
+            <label for="lastName">Last Name</label>
+            <input
+              aria-label="Enter last name "
+              name="lastName"
+              type="text"
+              placeholder="Enter your last name "
+              onChange={({ target }) => {
+                setLastName(target.value);
+              }}
+              value={lastName}
+            />
             <label for="email">Email</label>
             <input
               aria-label="Enter email address"
@@ -66,15 +117,10 @@ export default function Login() {
               onChange={({ target }) => setPassword(target.value)}
               value={password}
             />
-            <button
-              disabled={isInvalid}
-              type="submit"
-              // if invalid the display of button is dimmed
-            >
-              Log In
+            <button disabled={isInvalid} type="submit">
+              Create
             </button>
           </form>
-          <p id="return-btn">Return to store</p>
         </HeroContent>
       </Container>
     </div>
@@ -103,15 +149,7 @@ const HeroContent = styled.div`
   p {
     margin-top: 1rem;
   }
-  #return-btn {
-    letter-spacing: 1px;
-    transition: cubic-bezier(0.23, 1, 0.32, 1) 0.3s;
 
-    &:hover {
-      color: #f4e0ea;
-      cursor: pointer;
-    }
-  }
   span {
     &:hover {
       color: #f4e0ea;
@@ -134,6 +172,7 @@ const HeroContent = styled.div`
 
   button {
     color: white;
+    float: left;
     font-weight: bold;
     border: none;
     padding: 0.5rem 1.5rem;

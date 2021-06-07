@@ -5,7 +5,8 @@ import { Router, Route, Switch } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import * as ROUTES from "./constants/routes";
 
-const Account = lazy(() => import("./pages/Account"));
+const Login = lazy(() => import("./pages/account/Login"));
+const Register = lazy(() => import("./pages/account/CreateAccount"));
 const Cart = lazy(() => import("./pages/Cart"));
 const Home = lazy(() => import("./pages/Home"));
 const Responsibility = lazy(() => import("./pages/Responsibility"));
@@ -21,7 +22,8 @@ function App() {
     <Router history={history}>
       <Suspense fallback={<p>Loading...</p>}>
         <Switch>
-          <Route path={ROUTES.ACCOUNT} component={Account} />
+          <Route path={ROUTES.LOGIN} component={Login} />
+          <Route path={ROUTES.REGISTER} component={Register} />
           <Route path={ROUTES.RESPONSIBILITY} component={Responsibility} />
           <Route path={ROUTES.ALL_PRODUCTS} component={AllProducts} />
           <Route path={ROUTES.BLACK_MOON} component={Blackmoon} />

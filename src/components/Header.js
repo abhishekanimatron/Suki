@@ -32,7 +32,7 @@ export default function Header() {
           <SearchRoundedIcon />
         </Icon>
         <Link
-          to={ROUTES.ACCOUNT}
+          to={ROUTES.LOGIN}
           style={{
             textDecoration: "none",
             color: "black",

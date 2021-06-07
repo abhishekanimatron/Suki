@@ -63,6 +63,9 @@ const FooterFollow = styled.div`
     padding: 0.63rem;
     border: none;
     font-weight: bold;
+    @media (max-width: 800px) {
+      margin-top: 1rem;
+    }
   }
   icon {
     &:hover {
