@@ -1,0 +1,292 @@
+import { Helmet } from "react-helmet";
+import { homePageProductList } from "../data/data";
+import FreeShip from "../components/FreeShip";
+import Header from "../components/Header";
+import Navbar from "../components/Navbar";
+import FollowFooter from "../components/footer/FollowFooter";
+import FooterLinks from "../components/footer/FooterLinks";
+import styled from "styled-components/macro";
+
+import PinterestIcon from "@material-ui/icons/Pinterest";
+import AddIcon from "@material-ui/icons/Add";
+import TwitterIcon from "@material-ui/icons/Twitter";
+import RemoveIcon from "@material-ui/icons/Remove";
+import FacebookIcon from "@material-ui/icons/Facebook";
+
+export default function Product() {
+  let productId = window.location.href.substr(30).toString();
+  let productObject = homePageProductList[productId - 1];
+
+  return (
+    <>
+      <Helmet>
+        <title>{productObject.title} - Suki Market</title>
+      </Helmet>
+      <FreeShip />
+      <Header />
+      <Navbar />
+      <Container>
+        <ProductImage>
+          <img src={productObject.productImage} alt={productObject.title} />
+        </ProductImage>
+        <ShopContent>
+          <h2>{productObject.title}</h2>
+          <p id="price">${productObject.price} USD</p>
+          <label htmlFor="size-select">Size</label>
+          <select id="size-selector" name="size-select">
+            <option>XXS</option>
+            <option>XS</option>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+            <option>XL</option>
+            <option>2XL</option>
+          </select>
+          <div id="quantity-selector">
+            <span id="quantity-minus">
+              <RemoveIcon />
+            </span>
+            <input
+              aria-label="quanitity"
+              type="text"
+              defaultValue="1"
+              pattern="[0-9]*"
+            />
+            <span id="quantity-plus">
+              <AddIcon />
+            </span>
+          </div>
+          <button>Add to Cart</button>
+          <div id="description">
+            <p>
+              Ultra-oversized sweatshirt with striped rib neckline and cuffs.
+              Puffy print detail on chest. Marzia is wearing a Small, Felix is
+              wearing a Medium.
+            </p>
+            <ul>
+              <li>
+                65% cotton 35% polyester 300 gsm fleece. Trim: 100% cotton. Made
+                in Turkey.
+              </li>
+              <li>
+                Care Instructions: Machine wash cold with like colours. No
+                bleach. Tumble dry low. Warm Iron.
+              </li>
+            </ul>
+          </div>
+          <a href="/">Suki Size Guide</a>
+          <hr />
+          <div id="social-icons">
+            <span id="facebook">
+              <FacebookIcon />
+              <p>SHARE</p>
+            </span>
+            <span id="twitter">
+              <TwitterIcon />
+              <p>TWEET</p>
+            </span>
+            <span id="pinterest">
+              <PinterestIcon />
+              <p>PIN IT</p>
+            </span>
+          </div>
+        </ShopContent>
+      </Container>
+      <RecentContainer>
+        <h2>Recently Viewed</h2>
+        {/*TODO: Need to change */}
+        <RecentProducts>
+          <Wrap>
+            <img src="/images/all-products/tsukiSocks.jpg" alt="ts" />
+            <p>Suki Socks</p>
+          </Wrap>
+          <Wrap>
+            <img src="/images/all-products/gbKanjiPin.jpg" alt="gbkp" />
+            <p>Gold and Black Kanji Enamel Pin</p>
+          </Wrap>
+          <Wrap>
+            <img src="/images/all-products/tsukiECap.jpg" alt="tec" />
+            <p>Suki Logo Embroidered Cap</p>
+          </Wrap>
+          <Wrap>
+            <img src="/images/all-products/tsukiEBeret.jpg" alt="teb" />
+            <p>Suki Embroidered Wool Beret</p>
+          </Wrap>
+        </RecentProducts>
+      </RecentContainer>
+      <FollowFooter />
+      <FooterLinks />
+    </>
+  );
+}
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+`;
+const ProductImage = styled.div`
+  max-width: 50%;
+
+  img {
+    padding: 3rem;
+    max-height: 120vh;
+    object-fit: cover;
+    width: 100%;
+  }
+`;
+
+const ShopContent = styled.div`
+  padding-right: 4rem;
+  display: flex;
+  flex-direction: column;
+  padding-left: 4rem;
+  max-width: 50%;
+  text-align: center;
+  height: 100%;
+  text-align: left;
+  h2 {
+    font-weight: normal;
+  }
+  #price {
+    font-size: 1.3rem;
+    font-weight: 400;
+  }
+  label {
+    display: block;
+    font-size: 0.8rem;
+  }
+  select {
+    width: 90%;
+    height: 2.5rem;
+  }
+  #quantity-selector {
+    width: 20%;
+    margin-top: 1rem;
+    position: relative;
+    span {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      position: absolute;
+      height: 100%;
+      top: 0;
+      width: 40%;
+    }
+    #quantity-minus {
+      left: 0;
+      justify-content: flex-start;
+      padding-left: 10px;
+    }
+    #quantity-plus {
+      right: 0;
+      justify-content: flex-end;
+      padding-right: 10px;
+    }
+    input {
+      padding-top: 0.3rem;
+      padding-bottom: 0.3rem;
+      text-align: center;
+      width: 100%;
+    }
+  }
+  button {
+    margin-top: 0.8rem;
+    background-color: #f4e0ea;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    width: 35%;
+    padding: 0.7rem 0.1rem;
+    transition: cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.2s;
+    &:hover {
+      background-color: #edcddd;
+    }
+  }
+  #description {
+    letter-spacing: 0.5px;
+    padding-right: 3rem;
+    margin-top: 1rem;
+  }
+  a {
+    color: black;
+    text-decoration: underline;
+    &:hover {
+      color: #edcddd;
+    }
+  }
+  #social-icons {
+    display: flex;
+    left: 0;
+    p {
+      display: inline;
+      letter-spacing: 1.6px;
+      font-size: 0.7rem;
+      font-weight: bold;
+    }
+    span {
+      cursor: pointer;
+      margin: 2rem 3rem 2rem 0;
+    }
+    #facebook {
+      &:hover {
+        color: #3b5998;
+      }
+    }
+    #twitter {
+      &:hover {
+        color: #1da1f2;
+      }
+    }
+    #pinterest {
+      &:hover {
+        color: #bd081c;
+      }
+    }
+  }
+`;
+
+const RecentContainer = styled.div`
+  display: flex;
+  border: 1px solid black;
+  padding-top: 1rem;
+  flex-direction: column;
+  margin-top: 1.5rem;
+  text-align: center;
+  h2 {
+    font-size: 1.2rem;
+    font-weight: normal;
+  }
+`;
+
+const RecentProducts = styled.div`
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  @media (max-width: 900px) {
+    grid-template-columns: auto auto;
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: auto;
+  }
+`;
+const Wrap = styled.div`
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  text-align: center;
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 86%;
+    border-bottom: 1px solid black;
+    transition: 0.2s ease-out;
+    &:hover {
+      opacity: 0.75;
+      cursor: pointer;
+      transition: 0.2s ease-in;
+    }
+  }
+  p {
+    padding-top: 1.5rem;
+  }
+`;

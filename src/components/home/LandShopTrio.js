@@ -1,56 +1,28 @@
 import "../../styles/landshop.css";
 import styled from "styled-components";
 import * as ROUTES from "../../constants/routes";
+import { homePageProductList } from "../../data/data";
 import { Link } from "react-router-dom";
+import Product from "../../pages/Product";
 
 export default function LandShopTrio() {
   return (
     <Container>
-      <Wrap>
-        <ShopImage>
-          <img src="/images/landing-shop-items/marziapattern.jpg" alt="bm" />
-        </ShopImage>
-        <ShopContent>
-          <p class="shop-text">Shop the look</p>
-          <Link to={ROUTES.NOT_FOUND}>
-            <img src="/images/landing-shop-items/marziashirt.jpg" alt="ms" />
-          </Link>
-          <p class="item-name">Striped Button Up Shirt</p>
-          <p class="item-price">$ 77.00 USD</p>
-        </ShopContent>
-      </Wrap>
-      <Wrap>
-        <ShopContent>
-          <p class="shop-text">Shop the look</p>
-          <Link to={ROUTES.NOT_FOUND}>
-            <img src="/images/landing-shop-items/felix-vest.jpg" alt="ms" />
-          </Link>
-
-          <p class="item-name">Space Vest</p>
-          <p class="item-price">
-            <span class="sell-price">$ 54.00 USD</span> $ 25.00 USD
-          </p>
-        </ShopContent>
-        <ShopImage>
-          <img
-            src="/images/landing-shop-items/marzia-fullspaceoutfit.jpg"
-            alt="ms"
-          />
-        </ShopImage>
-      </Wrap>
-      <Wrap class="row">
-        <ShopImage>
-          <img src="/images/carousel/Felix.jpg" alt="bm" />
-        </ShopImage>
-        <ShopContent>
-          <p class="shop-text">Shop the look</p>
-          <Link to={ROUTES.NOT_FOUND}>
-            <img src="/images/landing-shop-items/felix_black.jpg" alt="fb" />
-          </Link>
-          <p class="item-name">Black Moon Sweatshirt</p>
-          <p class="item-price">$ 108.00 USD</p>
-        </ShopContent>
-      </Wrap>
+      {homePageProductList.map((product) => (
+        <Wrap key={product.id}>
+          <ShopImage>
+            <img src={product.modelImage} alt={product.title} />
+          </ShopImage>
+          <ShopContent>
+            <p className="shop-text">Shop the look</p>
+            <Link to={`/product/${product.id}`}>
+              <img src={product.productImage} alt={product.title} />
+            </Link>
+            <p className="item-name">{product.title}</p>
+            <p className="item-price">`${product.price} USD`</p>
+          </ShopContent>
+        </Wrap>
+      ))}
     </Container>
   );
 }
@@ -65,6 +37,7 @@ const Container = styled.div`
 const Wrap = styled.div`
   display: flex;
   align-items: center;
+  margin-bottom: 1.5rem;
   background-color: #99cfe0;
 `;
 

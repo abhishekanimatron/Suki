@@ -4,10 +4,12 @@ import { lazy, Suspense } from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import * as ROUTES from "./constants/routes";
+import Loading from "./components/loading";
 
 const Login = lazy(() => import("./pages/account/Login"));
 const Register = lazy(() => import("./pages/account/CreateAccount"));
 const Cart = lazy(() => import("./pages/Cart"));
+const Product = lazy(() => import("./pages/Product"));
 const Home = lazy(() => import("./pages/Home"));
 const Responsibility = lazy(() => import("./pages/Responsibility"));
 const AllProducts = lazy(() => import("./pages/collections/AllProducts"));
@@ -20,10 +22,11 @@ function App() {
   const history = createBrowserHistory();
   return (
     <Router history={history}>
-      <Suspense fallback={<p>Loading...</p>}>
+      <Suspense fallback={<Loading />}>
         <Switch>
           <Route path={ROUTES.LOGIN} component={Login} />
           <Route path={ROUTES.REGISTER} component={Register} />
+          <Route path={ROUTES.PRODUCT} component={Product} />
           <Route path={ROUTES.RESPONSIBILITY} component={Responsibility} />
           <Route path={ROUTES.ALL_PRODUCTS} component={AllProducts} />
           <Route path={ROUTES.BLACK_MOON} component={Blackmoon} />

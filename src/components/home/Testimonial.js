@@ -5,11 +5,11 @@ import "../../styles/testimonial.css";
 export default function Testimonial() {
   return (
     <div>
-      <div class="row">
-        <div class="col testimonial-img">
+      <div className="row">
+        <div className="col testimonial-img">
           <img src="/images/carousel/blackdress.jpg" alt="bd" />
         </div>
-        <div class="col testimonial-content">
+        <div className="col testimonial-content">
           <FormatQuoteIcon className="quote-icon" style={{ fontSize: 80 }} />
           <p className="quote">
             Welcome to Tsuki [つき] a unisex clothing and homeware brand that
@@ -20,8 +20,8 @@ export default function Testimonial() {
           <p className="founder-text">CO-FOUNDERS</p>
         </div>
       </div>
-      <div class="row">
-        <div class="col testimonial-content">
+      <div className="row">
+        <div className="col testimonial-content">
           <FormatQuoteIcon className="quote-icon" style={{ fontSize: 80 }} />
           <p className="quote">
             The name comes from the original Japanese translation - Moon. We've
@@ -31,7 +31,7 @@ export default function Testimonial() {
           <strong>FELIX & MARZIA</strong>
           <p className="founder-text">CO-FOUNDERS</p>
         </div>
-        <div class="col testimonial-img">
+        <div className="col testimonial-img">
           <img src="/images/carousel/Felix.jpg" alt="bd" />
         </div>
       </div>

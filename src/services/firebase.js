@@ -1,4 +1,4 @@
-import { firebase, FieldValue } from "../lib/firebase";
+import { firebase } from "../lib/firebase";
 
 export async function doesEmailExist(emailAddress) {
   // go inside firebase's firestore's 'users' collection where username is equal to
