@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { homePageProductList } from "../../data/data";
 import FreeShip from "../../components/FreeShip";
 import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
@@ -10,52 +12,22 @@ export default function Blackmoon() {
   useEffect(() => {
     document.title = "Black Moon - Suki";
   }, []);
+  let blackMoonProductsList = homePageProductList.slice(12);
   return (
     <>
       <FreeShip />
       <Header />
       <Navbar />
       <Container>
-        <Wrap>
-          <img src="/images/landing-shop-items/felix_black.jpg" alt="bmss" />
-          <p>Black Moon Sweatshirt</p>
-          <h6>$ 108.00 USD</h6>
-        </Wrap>
-        <Wrap>
-          <img src="/images/landing-shop-items/marziashirt.jpg" alt="sbs" />
-          <p>Striped Button Up Shirt</p>
-          <h6>$ 77.00 USD</h6>
-        </Wrap>
-        <Wrap>
-          <img src="/images/black-moon/bmRelaxT.jpg" alt="bmtrf" />
-          <p>Black Moon Trousers Relaxed Fit</p>
-          <h6>Sold Out</h6>
-        </Wrap>
-        <Wrap>
-          <img src="/images/black-moon/stripeScarf.jpg" alt="ss" />
-          <p>Striped Scarf</p>
-          <h6>$ 27.00 USD</h6>
-        </Wrap>
-        <Wrap>
-          <img src="/images/black-moon/bmSlimT.jpg" alt="bmtsf" />
-          <p>Black Moon Trousers Slim Fit</p>
-          <h6>Sold Out</h6>
-        </Wrap>
-        <Wrap>
-          <img src="/images/black-moon/cSCap.jpg" alt="csc" />
-          <p>Corduroy Suki Cap</p>
-          <h6>$ 34.00 USD</h6>
-        </Wrap>
-        <Wrap>
-          <img src="/images/black-moon/blackMoonSock.jpg" alt="bmss" />
-          <p>Black Moon Sock Set</p>
-          <h6>Sold Out</h6>
-        </Wrap>
-        <Wrap>
-          <img src="/images/black-moon/corduroyShirt.jpg" alt="cbs" />
-          <p>Corduroy Button Up Shirt</p>
-          <h6>Sold Out</h6>
-        </Wrap>
+        {blackMoonProductsList.map((product) => (
+          <Wrap key={product.id}>
+            <Link to={`/product/${product.id}`}>
+              <img src={product.productImage} alt={product.title} />
+            </Link>
+            <p>{product.title}</p>
+            <h6>{product.price ? `$ ${product.price} USD ` : "Sold Out"}</h6>
+          </Wrap>
+        ))}
       </Container>
       <FollowFooter />
       <FooterLinks />
@@ -66,6 +38,7 @@ export default function Blackmoon() {
 const Container = styled.div`
   margin-top: 6rem;
   display: grid;
+  grid-gap: 1px;
   grid-template-columns: auto auto auto;
   @media (max-width: 900px) {
     grid-template-columns: auto auto;
@@ -76,20 +49,22 @@ const Container = styled.div`
 `;
 
 const Wrap = styled.div`
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  background-color: #eee;
   text-align: center;
+  padding: 2rem;
   img {
+    box-shadow: 5px 5px 5px #bdbdbd, -20px -20px 30px #ffffff;
+    border-radius: 2%;
     object-fit: cover;
     width: 100%;
     height: 86%;
-    border-bottom: 1px solid black;
     transition: 0.2s ease-out;
     &:hover {
+      transform: scale(1.01);
       opacity: 0.75;
       cursor: pointer;
       transition: 0.2s ease-in;
+      box-shadow: 10px 10px 30px #bdbdbd, -20px -20px 30px #ffffff;
     }
   }
   p {

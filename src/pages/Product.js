@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 import { homePageProductList } from "../data/data";
 import FreeShip from "../components/FreeShip";
 import Header from "../components/Header";
@@ -16,6 +17,9 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 export default function Product() {
   let productId = window.location.href.substr(30).toString();
   let productObject = homePageProductList[productId - 1];
+  let relatedItemsSlice = homePageProductList.slice(0, 30);
+  let relatedItems = relatedItemsSlice.sort(() => 0.5 - Math.random());
+  let recentlyViewedItems = relatedItems.slice(0, 4);
 
   return (
     <>
@@ -31,10 +35,14 @@ export default function Product() {
         </ProductImage>
         <ShopContent>
           <h2>{productObject.title}</h2>
-          <p id="price">${productObject.price} USD</p>
+          <p
+            id="price"
+            className={`${productObject.price == 0 ? "greyed-out" : null}`}
+          >
+            ${productObject.price} USD
+          </p>
           <label htmlFor="size-select">Size</label>
           <select id="size-selector" name="size-select">
-            <option>XXS</option>
             <option>XS</option>
             <option>S</option>
             <option>M</option>
@@ -56,7 +64,10 @@ export default function Product() {
               <AddIcon />
             </span>
           </div>
-          <button>Add to Cart</button>
+          <button className={`${productObject.price == 0 ? "grey-btn" : null}`}>
+            {productObject.price == 0 ? "Sold Out" : "Add to Cart"}
+          </button>
+          {!productObject.price && <button>Email when available</button>}
           <div id="description">
             <p>
               Ultra-oversized sweatshirt with striped rib neckline and cuffs.
@@ -94,24 +105,15 @@ export default function Product() {
       </Container>
       <RecentContainer>
         <h2>Recently Viewed</h2>
-        {/*TODO: Need to change */}
         <RecentProducts>
-          <Wrap>
-            <img src="/images/all-products/tsukiSocks.jpg" alt="ts" />
-            <p>Suki Socks</p>
-          </Wrap>
-          <Wrap>
-            <img src="/images/all-products/gbKanjiPin.jpg" alt="gbkp" />
-            <p>Gold and Black Kanji Enamel Pin</p>
-          </Wrap>
-          <Wrap>
-            <img src="/images/all-products/tsukiECap.jpg" alt="tec" />
-            <p>Suki Logo Embroidered Cap</p>
-          </Wrap>
-          <Wrap>
-            <img src="/images/all-products/tsukiEBeret.jpg" alt="teb" />
-            <p>Suki Embroidered Wool Beret</p>
-          </Wrap>
+          {recentlyViewedItems.map((product) => (
+            <Wrap key={product.id}>
+              <Link to={`/product/${product.id}`}>
+                <img src={product.productImage} alt={product.title} />
+              </Link>
+              <p>{product.title}</p>
+            </Wrap>
+          ))}
         </RecentProducts>
       </RecentContainer>
       <FollowFooter />
@@ -151,6 +153,9 @@ const ShopContent = styled.div`
   #price {
     font-size: 1.3rem;
     font-weight: 400;
+  }
+  .greyed-out {
+    opacity: 0.3;
   }
   label {
     display: block;
@@ -204,17 +209,29 @@ const ShopContent = styled.div`
       background-color: #edcddd;
     }
   }
+  .grey-btn {
+    background-color: #ddd;
+    color: #999;
+    &:hover {
+      background-color: #ddd;
+      cursor: no-drop;
+    }
+  }
   #description {
     letter-spacing: 0.5px;
     padding-right: 3rem;
     margin-top: 1rem;
   }
   a {
+    margin-bottom: 1rem;
     color: black;
-    text-decoration: underline;
+    text-decoration: none;
     &:hover {
       color: #edcddd;
     }
+  }
+  hr {
+    border-top: black 1px solid;
   }
   #social-icons {
     display: flex;
@@ -257,6 +274,7 @@ const RecentContainer = styled.div`
   h2 {
     font-size: 1.2rem;
     font-weight: normal;
+    padding-bottom: 0.5rem;
   }
 `;
 

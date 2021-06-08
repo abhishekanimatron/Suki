@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import FreeShip from "../../components/FreeShip";
 import Header from "../../components/Header";
+import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar";
+import { homePageProductList } from "../../data/data";
 import FollowFooter from "../../components/footer/FollowFooter";
 import FooterLinks from "../../components/footer/FooterLinks";
 import styled from "styled-components";
@@ -10,57 +12,22 @@ export default function AllProducts() {
   useEffect(() => {
     document.title = "All Products - Suki";
   }, []);
+  let allProductsList = homePageProductList.slice(3);
   return (
     <>
       <FreeShip />
       <Header />
       <Navbar />
       <Container>
-        <Wrap>
-          <img src="/images/all-products/eLogotShirt.jpg" alt="els" />
-          <p>Embroidered Logo T-shirt</p>
-          <h6>$ 56.00 USD</h6>
-        </Wrap>
-        <Wrap>
-          <img src="/images/all-products/eLogoTurtleneck.jpg" alt="elt" />
-          <p>Embroidered Logo Turtleneck</p>
-          <h6>$ 80.00 USD</h6>
-        </Wrap>
-        <Wrap>
-          <img src="/images/all-products/oversizeHoodie.jpg" alt="oh" />
-          <p>Oversized Hoodie</p>
-          <h6>$ 108.00 USD</h6>
-        </Wrap>
-        <Wrap>
-          <img src="/images/all-products/tsukiEBeret.jpg" alt="teb" />
-          <p>Suki Embroidered Wool Beret</p>
-          <h6>$ 32.00 USD</h6>
-        </Wrap>
-        <Wrap>
-          <img src="/images/all-products/tsukiECap.jpg" alt="tec" />
-          <p>Suki Logo Embroidered Cap</p>
-          <h6>$ 34.00 USD</h6>
-        </Wrap>
-        <Wrap>
-          <img src="/images/all-products/tsukiSocks.jpg" alt="ts" />
-          <p>Suki Socks</p>
-          <h6>$ 12.00 USD</h6>
-        </Wrap>
-        <Wrap>
-          <img src="/images/all-products/gbKanjiPin.jpg" alt="gbkp" />
-          <p>Gold and Black Kanji Enamel Pin</p>
-          <h6>$ 8.00 USD</h6>
-        </Wrap>
-        <Wrap>
-          <img src="/images/all-products/s2KanjiPin.jpg" alt="skp" />
-          <p>Set of 2 Suki Kanji Enamel Pins</p>
-          <h6>$ 14.00 USD</h6>
-        </Wrap>
-        <Wrap>
-          <img src="/images/all-products/bpKanjiPin.jpg" alt="bpkp" />
-          <p>Black and Pink Kanji Enamel Pin</p>
-          <h6>$ 8.00 USD</h6>
-        </Wrap>
+        {allProductsList.map((product) => (
+          <Wrap key={product.id}>
+            <Link to={`/product/${product.id}`}>
+              <img src={product.productImage} alt={product.title} />
+            </Link>
+            <p>{product.title}</p>
+            <h6>`${product.price} USD`</h6>
+          </Wrap>
+        ))}
       </Container>
       <FollowFooter />
       <FooterLinks />
@@ -71,6 +38,7 @@ export default function AllProducts() {
 const Container = styled.div`
   margin-top: 6rem;
   display: grid;
+  grid-gap: 1px;
   grid-template-columns: auto auto auto;
   @media (max-width: 900px) {
     grid-template-columns: auto auto;
@@ -81,20 +49,22 @@ const Container = styled.div`
 `;
 
 const Wrap = styled.div`
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  background-color: #eee;
   text-align: center;
+  padding: 2rem;
   img {
+    box-shadow: 5px 5px 5px #bdbdbd, -20px -20px 30px #ffffff;
     object-fit: cover;
+    border-radius: 2%;
     width: 100%;
     height: 86%;
-    border-bottom: 1px solid black;
     transition: 0.2s ease-out;
     &:hover {
+      transform: scale(1.01);
       opacity: 0.75;
       cursor: pointer;
       transition: 0.2s ease-in;
+      box-shadow: 10px 10px 30px #bdbdbd, -20px -20px 30px #ffffff;
     }
   }
   p {

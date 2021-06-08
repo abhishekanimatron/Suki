@@ -1,9 +1,7 @@
 import "../../styles/landshop.css";
 import styled from "styled-components";
-import * as ROUTES from "../../constants/routes";
 import { homePageProductList } from "../../data/data";
 import { Link } from "react-router-dom";
-import Product from "../../pages/Product";
 
 export default function LandShopTrio() {
   return (

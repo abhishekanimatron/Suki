@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { homePageProductList } from "../../data/data";
 import FreeShip from "../../components/FreeShip";
 import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
@@ -10,67 +12,27 @@ export default function SukiSpace() {
   useEffect(() => {
     document.title = "SPACE 2029 - Suki";
   }, []);
+  let spaceProductsList = homePageProductList.slice(21);
   return (
     <>
       <FreeShip />
       <Header />
       <Navbar />
       <Container>
-        <Wrap>
-          <img src="/images/space-program/space-zip-shirt.jpg" alt="szs" />
-          <h5>SALE</h5>
-          <p>Space Quarter Zip Sweatshirt</p>
-          <h6>Sold Out</h6>
-        </Wrap>
-        <Wrap>
-          <img src="/images/space-program/space-vest.jpg" alt="sv" />{" "}
-          <h5>SALE</h5>
-          <p>Space Vest</p>
-          <h6>
-            <span>$ 54.00 USD</span> $ 25.00 USD
-          </h6>
-        </Wrap>
-        <Wrap>
-          <img src="/images/space-program/space-sleeve.jpg" alt="ss" />{" "}
-          <h5>SALE</h5>
-          <p>Space Long Sleeved Shirt</p>
-          <h6>Sold Out</h6>
-        </Wrap>
-        <Wrap>
-          <img src="/images/space-program/space-bandana.jpg" alt="sb" />{" "}
-          <h5>SALE</h5>
-          <p>Space Bandana</p>
-          <h6>Sold Out</h6>
-        </Wrap>
-        <Wrap>
-          <img src="/images/space-program/space-pin.jpg" alt="sp" />{" "}
-          <h5>SALE</h5>
-          <p>Suki Space Program Enamel Pin</p>
-          <h6>Sold Out</h6>
-        </Wrap>
-        <Wrap>
-          <img src="/images/space-program/space-tshirt.jpg" alt="st" />{" "}
-          <h5>SALE</h5>
-          <p>Space T-Shirt</p>
-          <h6>Sold Out</h6>
-        </Wrap>
-        <Wrap>
-          <img src="/images/space-program/space-jog.jpg" alt="sj" />{" "}
-          <h5>SALE</h5>
-          <p>Space Joggers</p>
-          <h6>Sold Out</h6>
-        </Wrap>
-        <Wrap>
-          <img src="/images/space-program/space-patches.jpg" alt="sps" />{" "}
-          <h5>SALE</h5>
-          <p>Space Patches Set</p>
-          <h6>Sold Out</h6>
-        </Wrap>
-        <Wrap>
-          <img src="/images/space-program/space-socks.jpg" alt="ss" />
-          <p>Space Program Socks</p>
-          <h6>Sold Out</h6>
-        </Wrap>
+        {spaceProductsList.map((product) => (
+          <Wrap key={product.id}>
+            <Link to={`/product/${product.id}`}>
+              <img src={product.productImage} alt={product.title} />
+            </Link>
+            <h5>{product.sale != 0 ? "SALE" : "RARE"}</h5>
+            <p>{product.title}</p>
+            <h6>
+              {product.price
+                ? `Previously, $ ${product.discountPrice} Now $${product.price} USD `
+                : "Sold Out"}
+            </h6>
+          </Wrap>
+        ))}
       </Container>
       <FollowFooter />
       <FooterLinks />
@@ -81,6 +43,7 @@ export default function SukiSpace() {
 const Container = styled.div`
   margin-top: 6rem;
   display: grid;
+  grid-gap: 1px;
   grid-template-columns: auto auto auto;
   @media (max-width: 900px) {
     grid-template-columns: auto auto;
@@ -91,23 +54,25 @@ const Container = styled.div`
 `;
 
 const Wrap = styled.div`
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  background-color: #eee;
   text-align: center;
+  padding: 2rem;
   img {
+    box-shadow: 5px 5px 5px #bdbdbd, -20px -20px 30px #ffffff;
+    border-radius: 2%;
     object-fit: cover;
     width: 100%;
     height: 86%;
-    border-bottom: 1px solid black;
     transition: 0.2s ease-out;
     @media (max-width: 1100px) {
       height: 80%;
     }
     &:hover {
+      transform: scale(1.01);
       opacity: 0.75;
       cursor: pointer;
       transition: 0.2s ease-in;
+      box-shadow: 10px 10px 30px #bdbdbd, -20px -20px 30px #ffffff;
     }
   }
   p {
@@ -115,6 +80,7 @@ const Wrap = styled.div`
     padding-top: 1rem;
   }
   h5 {
+    margin-top: 1rem;
     font-weight: normal;
     color: #fff;
     letter-spacing: 2px;

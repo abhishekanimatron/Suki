@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { homePageProductList } from "../data/data";
 import FreeShip from "../components/FreeShip";
 import Header from "../components/Header";
 import Navbar from "../components/Navbar";
@@ -10,6 +11,8 @@ function AnimalCrossing() {
   useEffect(() => {
     document.title = "Animal Crossing Closet - Suki";
   }, []);
+
+  let animalCrossingProductsList = homePageProductList.slice(30);
   return (
     <>
       <FreeShip />
@@ -21,33 +24,14 @@ function AnimalCrossing() {
         Animal Crossing Closet
       </h2>
       <Container>
-        <Wrap>
-          <img src="/images/animal-crossing/ac1.jpg" alt="els" />
-        </Wrap>
-        <Wrap>
-          <img src="/images/animal-crossing/ac2.jpg" alt="els" />
-        </Wrap>
-        <Wrap>
-          <img src="/images/animal-crossing/ac3.jpg" alt="els" />
-        </Wrap>
-        <Wrap>
-          <img src="/images/animal-crossing/ac4.jpg" alt="els" />
-        </Wrap>
-        <Wrap>
-          <img src="/images/animal-crossing/ac5.jpg" alt="els" />
-        </Wrap>
-        <Wrap>
-          <img src="/images/animal-crossing/ac6.jpg" alt="els" />
-        </Wrap>
-        <Wrap>
-          <img src="/images/animal-crossing/ac7.jpg" alt="els" />
-        </Wrap>
-        <Wrap>
-          <img src="/images/animal-crossing/ac8.jpg" alt="els" />
-        </Wrap>
-        <Wrap>
-          <img src="/images/animal-crossing/ac9.jpg" alt="els" />
-        </Wrap>
+        {animalCrossingProductsList.map((product) => (
+          <Wrap key={product.id}>
+            <img
+              src={product.productImage}
+              alt={`Animal Crossing ${product.id}`}
+            />
+          </Wrap>
+        ))}
       </Container>
       <FollowFooter />
       <FooterLinks />
