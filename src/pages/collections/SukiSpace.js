@@ -24,7 +24,7 @@ export default function SukiSpace() {
             <Link to={`/product/${product.id}`}>
               <img src={product.productImage} alt={product.title} />
             </Link>
-            <h5>{product.sale != 0 ? "SALE" : "RARE"}</h5>
+            <h5>{product.sale !== 0 ? "SALE" : "RARE"}</h5>
             <p>{product.title}</p>
             <h6>
               {product.price
@@ -45,10 +45,10 @@ const Container = styled.div`
   display: grid;
   grid-gap: 1px;
   grid-template-columns: auto auto auto;
-  @media (max-width: 900px) {
+  @media (max-width: 1024px) {
     grid-template-columns: auto auto;
   }
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     grid-template-columns: auto;
   }
 `;
@@ -97,10 +97,10 @@ const Wrap = styled.div`
       text-decoration: line-through;
       color: #888;
     }
-    @media (max-width: 900px) {
+    @media (max-width: 1024px) {
       padding-bottom: 10rem;
     }
-    @media (max-width: 900px) {
+    @media (max-width: 1024px) {
       padding-bottom: 1rem;
     }
   }

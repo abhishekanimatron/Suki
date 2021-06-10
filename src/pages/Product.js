@@ -8,10 +8,13 @@ import FollowFooter from "../components/footer/FollowFooter";
 import FooterLinks from "../components/footer/FooterLinks";
 import styled from "styled-components/macro";
 
-import PinterestIcon from "@material-ui/icons/Pinterest";
+import { useDispatch } from "react-redux";
+import { addToBasket } from "../slices/basketSlice";
+
 import AddIcon from "@material-ui/icons/Add";
-import TwitterIcon from "@material-ui/icons/Twitter";
 import RemoveIcon from "@material-ui/icons/Remove";
+import PinterestIcon from "@material-ui/icons/Pinterest";
+import TwitterIcon from "@material-ui/icons/Twitter";
 import FacebookIcon from "@material-ui/icons/Facebook";
 
 export default function Product() {
@@ -20,6 +23,23 @@ export default function Product() {
   let relatedItemsSlice = homePageProductList.slice(0, 30);
   let relatedItems = relatedItemsSlice.sort(() => 0.5 - Math.random());
   let recentlyViewedItems = relatedItems.slice(0, 4);
+
+  let title = productObject.title;
+  let productImage = productObject.productImage;
+  let price = productObject.price;
+  let id = productObject.id;
+
+  const dispatch = useDispatch();
+
+  const addItemToBasket = () => {
+    const product = {
+      id,
+      title,
+      productImage,
+      price,
+    };
+    dispatch(addToBasket(product));
+  };
 
   return (
     <>
@@ -37,7 +57,7 @@ export default function Product() {
           <h2>{productObject.title}</h2>
           <p
             id="price"
-            className={`${productObject.price == 0 ? "greyed-out" : null}`}
+            className={`${productObject.price === 0 ? "greyed-out" : null}`}
           >
             ${productObject.price} USD
           </p>
@@ -55,7 +75,7 @@ export default function Product() {
               <RemoveIcon />
             </span>
             <input
-              aria-label="quanitity"
+              aria-label="quantity"
               type="text"
               defaultValue="1"
               pattern="[0-9]*"
@@ -64,8 +84,11 @@ export default function Product() {
               <AddIcon />
             </span>
           </div>
-          <button className={`${productObject.price == 0 ? "grey-btn" : null}`}>
-            {productObject.price == 0 ? "Sold Out" : "Add to Cart"}
+          <button
+            onClick={addItemToBasket}
+            className={`${productObject.price === 0 ? "grey-btn" : null}`}
+          >
+            {productObject.price === 0 ? "Sold Out" : "Add to Cart"}
           </button>
           {!productObject.price && <button>Email when available</button>}
           <div id="description">
@@ -126,19 +149,31 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 1.5rem;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 const ProductImage = styled.div`
   max-width: 50%;
-
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
   img {
     padding: 3rem;
     max-height: 120vh;
     object-fit: cover;
     width: 100%;
+    @media (max-width: 768px) {
+      padding: 1rem;
+    }
   }
 `;
 
 const ShopContent = styled.div`
+  @media (max-width: 768px) {
+    max-width: 90%;
+    padding: 0;
+  }
   padding-right: 4rem;
   display: flex;
   flex-direction: column;
@@ -149,10 +184,16 @@ const ShopContent = styled.div`
   text-align: left;
   h2 {
     font-weight: normal;
+    @media (max-width: 768px) {
+      font-size: 1.2rem;
+    }
   }
   #price {
     font-size: 1.3rem;
     font-weight: 400;
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
   }
   .greyed-out {
     opacity: 0.3;
@@ -281,11 +322,8 @@ const RecentContainer = styled.div`
 const RecentProducts = styled.div`
   display: grid;
   grid-template-columns: auto auto auto auto;
-  @media (max-width: 900px) {
+  @media (max-width: 1024px) {
     grid-template-columns: auto auto;
-  }
-  @media (max-width: 600px) {
-    grid-template-columns: auto;
   }
 `;
 const Wrap = styled.div`

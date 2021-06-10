@@ -37,7 +37,7 @@ export default function ImageCarousel() {
 }
 
 const Container = styled.div`
-  @media (maxx-width: 600px) {
+  @media (maxx-width: 768px) {
     margin-top: -4rem;
   }
 `;
@@ -45,7 +45,7 @@ const ButtonWrap = styled.div`
   background-color: #fff;
   text-align: center;
   padding: 1rem 4rem;
-  @media (maxx-width: 600px) {
+  @media (maxx-width: 768px) {
     margin-top: -4rem;
   }
 `;
@@ -65,7 +65,7 @@ const ShopButton = styled.button`
   font-size: 0.8rem;
   padding: 0.7rem 2rem;
   transition: 0.7s all cubic-bezier(0.23, 1, 0.32, 1);
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     margin-top: -40rem;
   }
   &:hover {
@@ -79,7 +79,7 @@ const Wrap = styled.div`
     max-height: 70vh;
     object-fit: contain;
     width: 100%;
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       transform: scale(1);
       object-fit: cover;
       height: 80vh;

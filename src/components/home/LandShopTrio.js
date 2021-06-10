@@ -27,7 +27,7 @@ export default function LandShopTrio() {
 const Container = styled.div`
   margin-top: 2rem;
   width: 100%;
-  @media (maxx-width: 600px) {
+  @media (maxx-width: 768px) {
     margin-top: -4rem;
   }
 `;

@@ -51,10 +51,10 @@ const ContainerOne = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: auto auto auto;
-  @media (max-width: 800px) {
+  @media (max-width: 768px) {
     grid-template-columns: auto auto;
   }
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     grid-template-columns: auto;
   }
 `;

@@ -52,7 +52,7 @@ export default function LandItems() {
 
 const Container = styled.div`
   margin-top: 4rem;
-  @media (maxx-width: 600px) {
+  @media (maxx-width: 768px) {
     margin-top: -4rem;
   }
 `;
@@ -62,7 +62,7 @@ const Wrap = styled.div`
     max-height: 100vh;
     object-fit: cover;
     width: 100%;
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       transform: scale(1);
       object-fit: cover;
       height: 80vh;

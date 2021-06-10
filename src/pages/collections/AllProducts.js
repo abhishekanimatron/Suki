@@ -40,10 +40,10 @@ const Container = styled.div`
   display: grid;
   grid-gap: 1px;
   grid-template-columns: auto auto auto;
-  @media (max-width: 900px) {
+  @media (max-width: 1024px) {
     grid-template-columns: auto auto;
   }
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     grid-template-columns: auto;
   }
 `;
@@ -74,10 +74,10 @@ const Wrap = styled.div`
     font-weight: normal;
     color: #444;
     padding-bottom: 4rem;
-    @media (max-width: 900px) {
+    @media (max-width: 1024px) {
       padding-bottom: 6rem;
     }
-    @media (max-width: 900px) {
+    @media (max-width: 1024px) {
       padding-bottom: 1rem;
     }
   }

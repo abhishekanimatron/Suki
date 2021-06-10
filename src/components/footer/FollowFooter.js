@@ -36,7 +36,7 @@ const ContainerTwo = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: auto auto;
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     grid-template-columns: auto;
   }
 `;
@@ -63,7 +63,7 @@ const FooterFollow = styled.div`
     padding: 0.63rem;
     border: none;
     font-weight: bold;
-    @media (max-width: 800px) {
+    @media (max-width: 768px) {
       margin-top: 1rem;
     }
   }

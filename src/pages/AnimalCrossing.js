@@ -45,10 +45,10 @@ const Container = styled.div`
   padding: 2rem;
   display: grid;
   grid-template-columns: auto auto auto auto;
-  @media (max-width: 900px) {
+  @media (max-width: 1024px) {
     grid-template-columns: auto;
   }
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     grid-template-columns: auto;
   }
 `;
