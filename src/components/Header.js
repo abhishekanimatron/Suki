@@ -30,7 +30,8 @@ export default function Header() {
         >
           <div id="cart-icon">
             <ShoppingCartRoundedIcon />
-            <span>{items.length}</span>
+            {items.length!==0&& (<span > {items.length}</span>)}
+            
             {/* <Icon id="cart-icon">
               <ShoppingCartRoundedIcon />
             </Icon> */}

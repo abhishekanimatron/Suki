@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { useEffect } from "react";
 
 import FreeShip from "../components/FreeShip";
@@ -9,19 +9,33 @@ import FooterLinks from "../components/footer/FooterLinks";
 import { IOSSwitch } from "../components/cart/switchIos";
 
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
-import AddIcon from "@material-ui/icons/Add";
-import RemoveIcon from "@material-ui/icons/Remove";
+
+import {  useSelector } from "react-redux";
+import { selectItems } from "../slices/basketSlice";
+import * as ROUTES from "../constants/routes";
+import { Link } from "react-router-dom";
+import CheckoutProduct from "../components/cart/CheckoutProduct";
 
 export default function Cart() {
+
+
   useEffect(() => {
     document.title = "Cart - Suki";
   }, []);
+
+  const items=useSelector(selectItems);
   return (
     <div>
       <FreeShip /> <Header />
       <Navbar />
       <Container>
-        <Hero>
+        {items.length===0?(<EmptyContainer><h2>Shopping Cart</h2> <p>Your cart is currently empty.</p>
+        
+        <Link to={ROUTES.HOME}>
+        <button >Continue Shopping</button>
+        </Link>
+        </EmptyContainer>):
+       ( <Hero>
           <h2>Shopping Cart</h2>
           <div id="hero-content">
             <div id="hero-left">
@@ -35,78 +49,15 @@ export default function Cart() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td className="img">
-                      <a href="/">
-                        <img
-                          src="/images/all-products/tsukiSocks.jpg"
-                          alt="product"
-                        />
-                      </a>
-                    </td>
-                    <td>
-                      <div className="desc">
-                        <h5>Suki Socks</h5>
-                        <h6 className="product-property">S</h6>
-                      </div>
-                      <a href="/" className="remove-btn">
-                        REMOVE
-                      </a>
-                    </td>
-                    <td className="item-price">$ 12.00 USD</td>
-                    <td className="quantity">
-                      <div id="quantity-selector">
-                        <span id="quantity-minus">
-                          <RemoveIcon />
-                        </span>
-                        <input
-                          aria-label="quantity"
-                          type="text"
-                          defaultValue="1"
-                          pattern="[0-9]*"
-                        />
-                        <span id="quantity-plus">
-                          <AddIcon />
-                        </span>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="img">
-                      <a href="/">
-                        <img
-                          src="/images/all-products/tsukiEBeret.jpg"
-                          alt="product"
-                        />
-                      </a>
-                    </td>
-                    <td>
-                      <div className="desc">
-                        <h5>Suki Embroidered Wool Beret</h5>
-                        <h6 className="product-property">M</h6>
-                      </div>
-                      <a href="/" className="remove-btn">
-                        REMOVE
-                      </a>
-                    </td>
-                    <td className="item-price">$ 32.00 USD</td>
-                    <td className="quantity">
-                      <div id="quantity-selector">
-                        <span id="quantity-minus">
-                          <RemoveIcon />
-                        </span>
-                        <input
-                          aria-label="quantity"
-                          type="text"
-                          defaultValue="1"
-                          pattern="[0-9]*"
-                        />
-                        <span id="quantity-plus">
-                          <AddIcon />
-                        </span>
-                      </div>
-                    </td>
-                  </tr>
+                  {items.map((item,i)=>(
+                    <CheckoutProduct 
+                    key={i}
+                    id={item.id}
+                    title={item.title}
+                    productImage={item.productImage}
+                    price={item.price}
+                    />
+                  ))}
                 </tbody>
               </table>
               <a id="continue-shopping-btn" href="/">
@@ -135,7 +86,7 @@ export default function Cart() {
               <p id="before-taxes-info">Before taxes & shipping costs</p>
             </div>
           </div>
-        </Hero>
+        </Hero>)}
       </Container>
       <FollowFooter />
       <FooterLinks />
@@ -154,6 +105,41 @@ const Container = styled.div`
     flex-direction: column;
   }
 `;
+
+const EmptyContainer=styled.div`
+  display: flex;
+  margin-bottom:10rem;
+  width:100%;
+  justify-content:center;
+  text-align:center;
+  flex-direction:column;
+  align-items: center;
+  h2 {
+    font-weight: normal;
+    margin: 5rem 0 1rem;
+  }
+  button {
+        margin: 0.8rem 0;
+        background-color: #ffffff;
+        color:#f4e0ea;
+        border: 1px solid #f4e0ea;
+        font-weight: 600;
+        font-size: 1rem;
+        padding: 0.7rem 1.1rem;
+        transition: cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.2s;
+        &:hover {
+          background-color: #edcddd;
+          color:gray;
+        }
+        @media (max-width: 768px) {
+          width: 45%;
+        }
+        @media (max-width: 536px) {
+          width: 100%;
+        }
+      }
+  `
+;
 
 const Hero = styled.div`
   h2 {

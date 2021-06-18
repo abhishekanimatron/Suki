@@ -46,14 +46,12 @@
 .menu-item,
 .dropdown-item:hover {
   display: block;
-  color: transparent;
 }
 
 .menu-item,
 .dropdown-item:active {
   display: block;
   background-color: #ffd4ea;
-  color: transparent;
 }
 
 .dropdown-menu {

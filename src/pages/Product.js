@@ -16,6 +16,9 @@ import RemoveIcon from "@material-ui/icons/Remove";
 import PinterestIcon from "@material-ui/icons/Pinterest";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import FacebookIcon from "@material-ui/icons/Facebook";
+import CheckoutPopup from "../components/cart/popup/CheckoutPopup";
+import PopupContent from "../components/cart/popup/PopupContent";
+import { useState } from "react";
 
 export default function Product() {
   let productId = window.location.href.substr(30).toString();
@@ -30,8 +33,13 @@ export default function Product() {
   let id = productObject.id;
 
   const dispatch = useDispatch();
+  const [trigger, setTrigger] = useState(false);
 
   const addItemToBasket = () => {
+    setTrigger(true);
+    setTimeout(() => {
+      setTrigger(false);
+    }, 3000);
     const product = {
       id,
       title,
@@ -43,6 +51,9 @@ export default function Product() {
 
   return (
     <>
+      <CheckoutPopup trigger={trigger}>
+        <PopupContent productImage={productImage} title={title} price={price} />
+      </CheckoutPopup>
       <Helmet>
         <title>{productObject.title} - Suki Market</title>
       </Helmet>
@@ -127,7 +138,7 @@ export default function Product() {
         </ShopContent>
       </Container>
       <RecentContainer>
-        <h2>Recently Viewed</h2>
+        <h2>Also Checkout</h2>
         <RecentProducts>
           {recentlyViewedItems.map((product) => (
             <Wrap key={product.id}>
@@ -149,13 +160,13 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 1.5rem;
-  @media (max-width: 768px) {
+  @media (max-width: 940px) {
     flex-direction: column;
   }
 `;
 const ProductImage = styled.div`
   max-width: 50%;
-  @media (max-width: 768px) {
+  @media (max-width: 940px) {
     max-width: 100%;
   }
   img {
@@ -163,14 +174,14 @@ const ProductImage = styled.div`
     max-height: 120vh;
     object-fit: cover;
     width: 100%;
-    @media (max-width: 768px) {
+    @media (max-width: 940px) {
       padding: 1rem;
     }
   }
 `;
 
 const ShopContent = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: 940px) {
     max-width: 90%;
     padding: 0;
   }
@@ -184,14 +195,14 @@ const ShopContent = styled.div`
   text-align: left;
   h2 {
     font-weight: normal;
-    @media (max-width: 768px) {
+    @media (max-width: 940px) {
       font-size: 1.2rem;
     }
   }
   #price {
     font-size: 1.3rem;
     font-weight: 400;
-    @media (max-width: 768px) {
+    @media (max-width: 940px) {
       font-size: 1rem;
     }
   }
@@ -243,7 +254,7 @@ const ShopContent = styled.div`
     color: white;
     font-weight: bold;
     font-size: 1.1rem;
-    width: 35%;
+    width: 40%;
     padding: 0.7rem 0.1rem;
     transition: cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.2s;
     &:hover {

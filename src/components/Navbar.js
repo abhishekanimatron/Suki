@@ -1,7 +1,6 @@
-import * as ROUTES from "../constants/routes";
-import { Link } from "react-router-dom";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import styled from "styled-components";
+import * as ROUTES from '../constants/routes';
 import "../styles/nav.css";
 import { useState } from "react";
 
@@ -24,6 +23,7 @@ export default function Navbar() {
     <Container>
       <Nav>
         <DropdownButton
+          href={ROUTES.HOME}
           id="home-menu"
           className="dropdown-basic-button"
           title="Home ホームページ"
@@ -31,71 +31,38 @@ export default function Navbar() {
           onMouseEnter={showHomeDropdown}
           onMouseLeave={hideHomeDropdown}
         >
-          <Dropdown.Item className="menu-item" href="#">
-            <Link
-              to={ROUTES.RESPONSIBILITY}
-              style={{
-                textDecoration: "none",
-                color: "white",
-              }}
-            >
+          <Dropdown.Item href={ROUTES.RESPONSIBILITY} className="menu-item">
+            
               RESPONSIBILITY
-            </Link>
+            
           </Dropdown.Item>
         </DropdownButton>
         <DropdownButton
           id="collection-menu"
+
           className="dropdown-basic-button"
           title="Collections コレクション"
           show={collectionShow}
           onMouseEnter={showCollectionDropdown}
           onMouseLeave={hideCollectionDropdown}
         >
-          <Dropdown.Item className="menu-item" href="#">
-            <Link
-              to={ROUTES.ALL_PRODUCTS}
-              style={{
-                textDecoration: "none",
-                color: "white",
-              }}
-            >
+          <Dropdown.Item href={ROUTES.ALL_PRODUCTS} className="menu-item">
+           
               BASICS
-            </Link>
           </Dropdown.Item>
-          <Dropdown.Item className="menu-item" href="#">
-            <Link
-              to={ROUTES.BLACK_MOON}
-              style={{
-                textDecoration: "none",
-                color: "white",
-              }}
-            >
+          <Dropdown.Item href={ROUTES.BLACK_MOON} className="menu-item" >
+           
               BLACK MOON
-            </Link>
           </Dropdown.Item>
-          <Dropdown.Item className="menu-item" href="#">
-            <Link
-              to={ROUTES.SPACE}
-              style={{
-                textDecoration: "none",
-                color: "white",
-              }}
-            >
+          <Dropdown.Item href={ROUTES.SPACE} className="menu-item" >
+            
               SUKI SPACE PROGRAM
-            </Link>
           </Dropdown.Item>
-        </DropdownButton>
-        <Link
-          to={ROUTES.ANIMAL_CROSSING}
-          style={{
-            textDecoration: "none",
-            color: "black",
-          }}
-        >
-          <h6>
+        </DropdownButton >
+        
+          <h6 href={ROUTES.RESPONSIBILITY}>
             Animal Crossing Closet <span>どうぶつの森 コレクション</span>
           </h6>
-        </Link>
       </Nav>
     </Container>
   );
