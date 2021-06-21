@@ -14,7 +14,7 @@ function CheckoutPopup(props) {
 export default CheckoutPopup;
 
 const Popup = styled.div`
-  z-index: 10;
+  /* z-index: 10; */
   position: fixed;
   top: 0;
   left: 0;

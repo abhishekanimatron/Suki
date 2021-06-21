@@ -4,9 +4,6 @@
   box-sizing: border-box;
 }
 body {
+  overflow-x: hidden;
   font-family: "KoHo", sans-serif;
-}
-
-::-webkit-scrollbar {
-  display: none;
 }

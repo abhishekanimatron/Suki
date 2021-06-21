@@ -12,7 +12,7 @@ export default function AllProducts() {
   useEffect(() => {
     document.title = "All Products - Suki";
   }, []);
-  let allProductsList = homePageProductList.slice(3);
+  let allProductsList = homePageProductList.slice(3, 12);
   return (
     <>
       <FreeShip />

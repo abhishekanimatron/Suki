@@ -1,7 +1,8 @@
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import styled from "styled-components";
-import * as ROUTES from '../constants/routes';
+import * as ROUTES from "../constants/routes";
 import "../styles/nav.css";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 export default function Navbar() {
@@ -32,14 +33,11 @@ export default function Navbar() {
           onMouseLeave={hideHomeDropdown}
         >
           <Dropdown.Item href={ROUTES.RESPONSIBILITY} className="menu-item">
-            
-              RESPONSIBILITY
-            
+            RESPONSIBILITY
           </Dropdown.Item>
         </DropdownButton>
         <DropdownButton
           id="collection-menu"
-
           className="dropdown-basic-button"
           title="Collections コレクション"
           show={collectionShow}
@@ -47,22 +45,20 @@ export default function Navbar() {
           onMouseLeave={hideCollectionDropdown}
         >
           <Dropdown.Item href={ROUTES.ALL_PRODUCTS} className="menu-item">
-           
-              BASICS
+            BASICS
           </Dropdown.Item>
-          <Dropdown.Item href={ROUTES.BLACK_MOON} className="menu-item" >
-           
-              BLACK MOON
+          <Dropdown.Item href={ROUTES.BLACK_MOON} className="menu-item">
+            BLACK MOON
           </Dropdown.Item>
-          <Dropdown.Item href={ROUTES.SPACE} className="menu-item" >
-            
-              SUKI SPACE PROGRAM
+          <Dropdown.Item href={ROUTES.SPACE} className="menu-item">
+            SUKI SPACE PROGRAM
           </Dropdown.Item>
-        </DropdownButton >
-        
-          <h6 href={ROUTES.RESPONSIBILITY}>
+        </DropdownButton>
+        <Link to={ROUTES.ANIMAL_CROSSING} styles={{ textDecoration: "none" }}>
+          <h6>
             Animal Crossing Closet <span>どうぶつの森 コレクション</span>
           </h6>
+        </Link>
       </Nav>
     </Container>
   );
@@ -76,11 +72,13 @@ const Nav = styled.div`
 
   h6 {
     font-weight: normal;
+    color: #000;
     overflow: hidden;
     &:hover {
       color: rgb(75, 161, 187);
       background-color: transparent;
       cursor: pointer;
+      text-decoration: darkgray;
     }
     span {
       @media (max-width: 900px) {

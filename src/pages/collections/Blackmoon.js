@@ -12,7 +12,7 @@ export default function Blackmoon() {
   useEffect(() => {
     document.title = "Black Moon - Suki";
   }, []);
-  let blackMoonProductsList = homePageProductList.slice(12);
+  let blackMoonProductsList = homePageProductList.slice(12, 20);
   return (
     <>
       <FreeShip />

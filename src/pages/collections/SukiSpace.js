@@ -12,7 +12,7 @@ export default function SukiSpace() {
   useEffect(() => {
     document.title = "SPACE 2029 - Suki";
   }, []);
-  let spaceProductsList = homePageProductList.slice(21);
+  let spaceProductsList = homePageProductList.slice(21, 30);
   return (
     <>
       <FreeShip />

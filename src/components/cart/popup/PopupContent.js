@@ -7,7 +7,7 @@ import { IOSSwitch } from "../switchIos";
 function PopupContent({ title, productImage, price }) {
   return (
     <Container>
-      <img src={productImage} />
+      <img src={productImage} alt="Product " />
       <Content>
         <p id="info">ADDED TO YOUR CART</p>
         <p id="title">{title}</p>
@@ -43,6 +43,7 @@ const Container = styled.div`
   img {
     max-width: 50%;
     object-fit: cover;
+    padding: 1.5rem;
   }
 `;
 

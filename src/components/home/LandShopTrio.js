@@ -4,9 +4,10 @@ import { homePageProductList } from "../../data/data";
 import { Link } from "react-router-dom";
 
 export default function LandShopTrio() {
+  let landingShopProductsList = homePageProductList.slice(0, 2);
   return (
     <Container>
-      {homePageProductList.map((product) => (
+      {landingShopProductsList.map((product) => (
         <Wrap key={product.id}>
           <ShopImage>
             <img src={product.modelImage} alt={product.title} />
